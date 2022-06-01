@@ -52,27 +52,30 @@ def display_value(continuous_var):
     grouped_mean=df.groupby(['Cabin Class', 'Embarked'])[continuous_var].mean()
     results=pd.DataFrame(grouped_mean)
     # Create a grouped bar chart
-    mydata1 = go.Bar(
+    mydata1 = go.Scatter(
         x=results.loc['first'].index,
         y=results.loc['first'][continuous_var],
+        mode = 'lines',
         name='First Class',
         marker=dict(color=color1)
     )
-    mydata2 = go.Bar(
+    mydata2 = go.Scatter(
         x=results.loc['second'].index,
         y=results.loc['second'][continuous_var],
+        mode = 'lines',
         name='Second Class',
         marker=dict(color=color2)
     )
-    mydata3 = go.Bar(
+    mydata3 = go.Scatter(
         x=results.loc['third'].index,
         y=results.loc['third'][continuous_var],
+        mode = 'lines',
         name='Third Class',
         marker=dict(color=color3)
     )
 
     mylayout = go.Layout(
-        title='Grouped bar chart',
+        title='Line chart',
         xaxis = dict(title = 'Port of Embarkation'), # x-axis label
         yaxis = dict(title = str(continuous_var)), # y-axis label
 
